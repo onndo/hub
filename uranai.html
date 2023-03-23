@@ -10,6 +10,30 @@
     <input type="text" id="name">
     <button onclick="fortune()">占う</button>
     <p id="fortune-result"></p>
-    <script src="fortune.js"></script>
+    <script type="text/javascript">
+    function fortune() {
+    const name = document.getElementById("name").value;
+    const fortuneResult = document.getElementById("fortune-result");
+    
+    if (name === "") {
+      fortuneResult.textContent = "名前が入力されていません。";
+    } else {
+      const fortunes = [
+        "大吉",
+        "中吉",
+        "小吉",
+        "吉",
+        "末吉",
+        "凶",
+        "大凶"
+      ];
+      
+      const randomIndex = Math.floor(Math.random() * fortunes.length);
+      const fortune = fortunes[randomIndex];
+      
+      fortuneResult.textContent = `${name}さんの運勢は${fortune}です。`;
+    }
+  }
+    </script>
   </body>
 </html>
