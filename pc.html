@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>湿球温度計算機</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>湿球温度計算機</h1>
+    <p>以下に気温と相対湿度を入力してください。</p>
+    <form>
+        <label for="temperature">気温（℃）：</label>
+        <input type="number" id="temperature" name="temperature" required><br>
+        <label for="humidity">相対湿度（%）：</label>
+        <input type="number" id="humidity" name="humidity" required><br><br>
+        <input type="button" value="計算" onclick="calculate()">
+    </form>
+    <p id="result"></p>
+    <script type="text/javascript">
+        function calculate() {
+            // 入力値の取得
+            var temperature = document.getElementById("temperature").value;
+            var humidity = document.getElementById("humidity").value;
+
+            // 湿球温度の計算
+            var a = 17.27;
+            var b = 237.7;
+            var alpha = ((a * temperature) / (b + temperature)) + Math.log(humidity/100);
+            var dew_point = (b * alpha) / (a - alpha);
+            var wet_bulb = temperature * Math.atan(0.151977 * Math.sqrt(dew_point + 8.313659)) + Math.atan(temperature + dew_point) - Math.atan(dew_point - 1.676331) + 0.00391838 * Math.pow(dew_point, 1.5) * Math.atan(0.023101 * dew_point) - 4.686035;
+
+            // 結果の表示
+            document.getElementById("result").innerHTML = "湿球温度は " + wet_bulb.toFixed(1) + " ℃です。";
+        }
+    </script>
+</body>
+</html>
