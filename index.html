@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Button Example</title>
+</head>
+<body>
+	<h1>湿球温度計算機</h1>
+	<button onclick="goToWebsite()">こちらをクリック</button>
+	<script type="text/javascript">
+		function goToWebsite() {
+			if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+				window.location.href = "sumaho.html";
+		} else {
+			    window.location.href = "pc.html";
+		}}
+	</script>
+</body>
+<body>
+	<h1>占い</h1>
+	<button onclick="goToWebsite()">こちらをクリック</button>
+	<script type="text/javascript">
+		function goToWebsite() {
+			window.location.href = "uranai.html";
+		}
+	</script>
+</body>
+</html>
